@@ -7,8 +7,11 @@ def threesubtri(tri):
             (tri[1],(tri[1]+tri[0])/2,(tri[1]+tri[2])/2),
             (tri[2],(tri[2]+tri[0])/2,(tri[2]+tri[1])/2))
 
-Equilateral = (array([-0.5, 0]), array([0.5, 0]), array([0, 3**(0.5)/2]))
+Equilateral = [[-0.5, 0], [0.5, 0], [0, 3**(0.5)/2]]
 def Sierpinski(depth, tri0 = Equilateral):
+    tri0[0] = array(tri0[0])
+    tri0[1] = array(tri0[1])
+    tri0[2] = array(tri0[2])
     if depth==0: return [tri0]
     TR=threesubtri(tri0)
     for i in range(depth-1):
@@ -30,11 +33,3 @@ def SierpinskiPlot(depth, tri0 = Equilateral, col = 'blue' ):
     plt.gca().set_aspect(1)
     plt.close()
     return SerP
-
-
-###Example1:/home/moh/github/Sierpinski/Sierpinski.py
-sier = SierpinskiPlot(3,col='red')
-sier
-#sier.savefig("Sierpinski.pdf", bbox_inches='tight')
-###Example2:
-SierpinskiPlot(3,tri0 = (array([-2, 0]), array([2, 0]), array([-4, 3])))
